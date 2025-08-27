@@ -1,10 +1,10 @@
 import type { Request, Response } from "express";
-import { readTodos, writeTodos } from "./todoStorage";
+import { loadTodos, saveTodos } from "./todoStorage";
 
 export const deleteTodo = (req: Request, res: Response) => {
-  const todos = readTodos();
+  const todos = loadTodos();
   const id = parseInt(req.params.id ?? "");
   const filtered = todos.filter((t) => t.id !== id);
-  writeTodos(filtered);
+  saveTodos(filtered);
     res.json({ message: "Deleted" });
   }

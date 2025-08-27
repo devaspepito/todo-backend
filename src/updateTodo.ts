@@ -1,14 +1,17 @@
 import type { Request, Response } from "express";
-import { readTodos, writeTodos } from "./todoStorage";
+import type { Todo } from "./types";
+import { saveTodos, loadTodos } from "./todoStorage";
 
 export const updateTodo = (req: Request, res: Response) => {
-  const todos = readTodos();
-  const id = parseInt(req.params.id ?? "");
-  const index = todos.findIndex((t) => t.id === id);
+  const todos = loadTodos();
+  const id = Number(req.params.id);
+  const { title, completed, description } = req.body as Partial<Todo>;
+  const todo = todos.find((t) => t.id === id);
+  if (!todo) return res.status(404).send("Not found");
 
-  if (index === -1) return res.status(404).json({ message: "Not found" });
-
-  todos[index] = { ...todos[index], ...req.body };
-  writeTodos(todos);
-  res.json(todos[index]);
-};
+  if (title !== undefined) todo.title = title;
+  if (completed !== undefined) todo.completed = completed;
+  if (description !== undefined) todo.description = description;
+  saveTodos(todos);
+  return res.json(todo);
+}

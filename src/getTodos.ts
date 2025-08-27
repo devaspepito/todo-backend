@@ -1,6 +1,5 @@
 import type { Request, Response } from "express";
-import { readTodos } from "./todoStorage";
-
+import { loadTodos, saveTodos } from "./todoStorage";
 export const getTodos = (_req: Request, res: Response) => {
-  res.json(readTodos());
+  res.json(loadTodos());
 };
