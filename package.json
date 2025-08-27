@@ -21,7 +21,7 @@
     "express": "^5.1.0"
   },
   "scripts": {
-    "start": "bun run index.ts",
-    "dev": "nodemon --watch . --exec \"bun run index.ts\""
+    "start": "bun run api/index.ts",
+    "dev": "nodemon --watch . --exec \"bun run api/index.ts\""
   }
 }
