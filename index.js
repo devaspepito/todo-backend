@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
-import { getTodos } from "./src/getTodos.ts";
-import { addTodo } from "./src/addTodo.ts";
-import { updateTodo } from "./src/updateTodo.ts";
-import { deleteTodo } from "./src/deleteTodo.ts";
+import { getTodos } from "./src/getTodos.js";
+import { addTodo } from "./src/addTodo.js";
+import { updateTodo } from "./src/updateTodo.js";
+import { deleteTodo } from "./src/deleteTodo.js";
 
 const app = express();
 const PORT = 4000;
