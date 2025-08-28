@@ -1,11 +1,11 @@
-import type { Request, Response } from "express";
-import type { Todo } from "./types";
 import { saveTodos, loadTodos } from "./todoStorage";
+import { Request, Response } from "express";
+import { Todo } from "./types"; // Adjust the path if your Todo type is elsewhere
 
-export const updateTodo = (req: Request, res: Response) => {
+export const updateTodo = (req, res) => {
   const todos = loadTodos();
   const id = Number(req.params.id);
-  const { title, completed, description } = req.body as Partial<Todo>;
+  const { title, completed, description } = req.body;
   const todo = todos.find((t) => t.id === id);
   if (!todo) return res.status(404).send("Not found");
 
