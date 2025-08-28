@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
-import { getTodos } from "./src/getTodos";
-import { addTodo } from "./src/addTodo";
-import { updateTodo } from "./src/updateTodo";
-import { deleteTodo } from "./src/deleteTodo";
+import { getTodos } from "./getTodos";
+import { addTodo } from "./addTodo";
+import { updateTodo } from "./updateTodo";
+import { deleteTodo } from "./deleteTodo";
 
 const app = express();
 const PORT = 4000;
@@ -19,3 +19,5 @@ app.delete("/api/todos/:id", deleteTodo);
 app.listen(PORT, () =>
   console.log(`✅ Backend running on http://localhost:${PORT}`),
 );
+
+export default app;
